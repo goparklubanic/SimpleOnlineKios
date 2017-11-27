@@ -1,8 +1,21 @@
 <?php
 require("class.crud.inc.php");
 class member extends dbcrud{
+
+    function login($key){
+      $derc = $this->pickup1('*','member','password_member',array($key));
+      if($derc == null){
+        $callBack = "Member belum terdaftar.
+        <span class='btn btn-default' onClick=history.go(-1)>OK</span>";
+      }else{
+        $_SESSION['member_id'] = $mid;
+        $_SESSION['member_fn'] = $derc['nama_member'];
+        $callBack = "Login berahasil.
+        <a class='btn btn-default' href='./'>OK</a>";
+      }
+      return($callBack);
+    }
   /*
-    function login(){}
     function pesan(){}
     function bayar(){}
     function infoBarang(){}
