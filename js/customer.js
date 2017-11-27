@@ -43,6 +43,7 @@ function cekVisit(){
       localStorage.setItem('visit',visitor.total);
       localStorage.setItem('idvst',visitor.index);
       alert('Selamat datang pengunjung ke -'+visitor.total);
+      location.reload();
     });
   }
 }
