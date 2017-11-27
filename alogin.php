@@ -4,9 +4,7 @@
 $mid  = $_POST['mid'];
 $pwd  = $_POST['pwd'];
 $key  = md5($mid."_".$pwd);
-$callBack=$member->login($key);
-/*
-$derc = $member->pickup1('*','member','password_member',array($key));
+$derc=$member->login($key,$mid);
 if($derc == null){
   $callBack = "Member belum terdaftar.
   <span class='btn btn-default' onClick=history.go(-1)>OK</span>";
@@ -16,7 +14,7 @@ if($derc == null){
   $callBack = "Login berahasil.
   <a class='btn btn-default' href='./'>OK</a>";
 }
-*/
+
 echo "
 <div id='login-box'>
 <center>
@@ -24,4 +22,5 @@ echo "
 </center>
 </div>
 ";
+
 ?>
