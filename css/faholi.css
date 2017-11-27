@@ -1,0 +1,94 @@
+body{
+  background-color: #32AFDB;
+}
+.container {padding: 0;}
+.pg-header{
+  margin-top: 10px;
+  width: 100%;
+  box-shadow: 0px 0px 0px #FFF;
+  height: 180px;
+  background-image: url('../images/banner.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.mainrow{
+  min-height: 600px;
+  width:100%;
+  margin:0;
+  padding: 10px 50px;
+  background: #E9E9E9;
+}
+
+.pg-footer{
+  clear:both;
+  height: 60px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.grad {
+    background: #32AFDB; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#32AFDB, #F0F0F0); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#32AFDB, #F0F0F0); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#32AFDB, #F0F0F0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#32AFDB, #F0F0F0); /* Standard syntax */
+}
+
+.product-box {
+  background-color: #EDEDED;
+}
+.product-img{
+  background-color: #EFEFEF;
+  width: 200px; height: 200px;
+  margin: auto;
+}
+
+.product-img img{ width: 200px; height: 200px; }
+.hide1st { display:none; }
+.navbar {margin:0;}
+.td {vertical-align: top; }
+.br_serupa {
+  height: 240px; width: 160px;
+  display: inline-block; margin: auto 10px;
+  border: 1px solid #800; }
+.br_serupa img {width:100%; height: 158px;}
+.control-icon {height: 40px; margin: 2px 5px;}
+.data-search {padding: 5px 15px; border-radius: 5px; width: 300px;}
+select.fe-search {padding: 5px 15px; border-radius: 5px; width: 180px; margin-top: 10px;}
+#br_serupa{width: 920px; margin: auto; overflow-x:auto;}
+#db_image {text-align: center;}
+#db_image img {height: 200px;}
+#login-box{
+  width:40%; margin: 50px auto; min-width:300px;  padding: 25px;
+  border: 1px solid #FFF; border-radius: 12px; box-shadow: 0px 0px 20px #999;
+}
+
+table.billing {border: 1px dashed #DDD; margin: 50px 0; font-family: monospace; font-size: 12px;}
+table.billing tr th {text-align: center; padding: 5px;}
+table.billing tr td { padding: 5px;}
+
+@media screen and ( min-width : 720px ){
+  .product-box{
+    float: left;
+    height: 260px; width: 220px;
+    margin: 10px 20px;
+  }
+
+  .product-info{text-align: center;}
+  .product-name{font-weight: bold;}
+  .product-price{ font-family:monospace; text-align: right; padding-right: 20px;}
+
+
+}
+
+@media screen and ( max-width : 720px ){
+  .product-box{
+    height: 260px; width: 90%;
+    margin: 10px auto;
+  }
+
+  .product-info{text-align: center;}
+  .product-name{font-weight: bold;}
+  .product-price{ font-family:monospace; text-align: right; padding-right: 20px;}
+}
