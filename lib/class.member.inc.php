@@ -6,8 +6,11 @@ class member extends dbcrud{
       $derc = $this->pickup1('*','member','password_member',array($key));
       return($derc);
     }
+
+    function pesan($sets,$post){
+      $this->insert('barangTransaksi',$sets,$post);
+    }
   /*
-    function pesan(){}
     function bayar(){}
     function infoBarang(){}
   */
