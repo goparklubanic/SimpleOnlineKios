@@ -1,6 +1,6 @@
 <?php
-require("../lib/class.crud.inc.php");
-$data = new dbcrud();
+require("../lib/class.pegawai.inc.php");
+$data = new pegawai();
 
 
 
@@ -29,8 +29,8 @@ if($_GET['mod']== 'chg'){
     $sets = "nama_barang,kategori,harga_barang,warna_barang";
     $post = array($_POST['nama_barang'],$_POST['kategori'], $_POST['harga_barang'],
                   $_POST['warna_barang'],$_POST['kd_barang']);
-
-  $update = $data->update('barang',$sets,$post,'kd_barang');
+    $update = $data->updateBarang($sets,$post);
+  // $update = $data->update('barang',$sets,$post,'kd_barang');
   redirPage('Pemutahiran data barang');
 }
 

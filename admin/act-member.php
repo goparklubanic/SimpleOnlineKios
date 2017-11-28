@@ -1,6 +1,6 @@
 <?php
-require("../lib/class.crud.inc.php");
-$data = new dbcrud();
+require("../lib/class.pegawai.inc.php");
+$data = new pegawai();
 
 if($_GET['mod'] == 'new'){
   $password = md5($_POST['id_member'].'_'.$_POST['password_member']);
@@ -18,7 +18,8 @@ if($_GET['mod'] == 'chg'){
                 $_POST['no_telp'],$_POST['id_member']);
   $keys = 'id_member';
 
-  $member = $data->update('member',$sets,$post,$keys);
+  //$member = $data->update('member',$sets,$post,$keys);
+  $member = $data->updateMember($sets,$post,$keys);
   redirPage('Update member');
 }
 

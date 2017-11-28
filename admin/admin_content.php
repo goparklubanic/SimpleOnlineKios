@@ -6,6 +6,7 @@
     case 'pegawai' : include('mp_pegawai.php'); break;
     case 'debarg'  : include('dt_barang.php');  break;
     case 'hapus'   : include('deletion.php');   break;
+    case 'bayar'   : include('purchase.php');   break;
     default : include('mp_barang.php'); break;
   }
 ?>
