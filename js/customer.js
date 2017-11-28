@@ -52,3 +52,10 @@ function setVisitorId(){
   var visid = localStorage.getItem('idvst');
   $("#visitor_id").html('Pengunjung '+visid);
 }
+
+function wurungPesen(id){
+  var wurung = confirm("Item pesanan akan diganti ?");
+  if(wurung == true){
+    window.location="./?page=hapus&obj=barang&id="+id;
+  }
+}

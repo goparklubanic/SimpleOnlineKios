@@ -44,7 +44,7 @@ $mbr = $member->pickup1('*','member','id_member',array($_SESSION['member_id']));
       <td>
         &nbsp;".$brg[$i]['nama_barang']."<br />
         &nbsp;[ ".$brg[$i]['kd_barang']." ]
-        <a class='rakecetak' href='./?page=hapus&obj=barang&id=".$brg[$i]['kd_barang']."'>ganti</a>
+        <a href=javascript:void(0); class='rakecetak' onClick=wurungPesen(".$brg[$i]['id'].") >Ganti</a>
       </td>
       <td align='right'>".$brg[$i]['qty']."</td>
       <td align='right'>".number_format($brg[$i]['harga_barang'],2,',','.')."</td>

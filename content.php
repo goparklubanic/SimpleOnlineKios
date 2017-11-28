@@ -6,5 +6,6 @@ switch($_GET['page']){
   case 'logout': include("logout.php");        break;
   case 'daftar': include("forms/reg-frm.php"); break;
   case 'chart' : include("chart.php");         break;
+  case 'hapus' : include("cust_deletion.php"); break;
 }
 ?>

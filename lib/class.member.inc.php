@@ -12,7 +12,7 @@ class member extends dbcrud{
     function infoBarang(){}
   */
     function kerangjangBelanja($ktrx){
-      $sql = "SELECT kd_barang,nama_barang,sum(qty) qty, harga_barang,
+      $sql = "SELECT id,kd_barang,nama_barang,sum(qty) qty, harga_barang,
               (sum(qty) * harga_barang) jumlah
               FROM view_barangTransaksi
               WHERE kd_transaksi = ?
@@ -20,9 +20,9 @@ class member extends dbcrud{
       $qry = $this->transact($sql,array($ktrx));
       $barang = array();
       while($r = $qry->fetch()){
-        $item = array('kd_barang'=>$r['kd_barang'], 'nama_barang'=>$r['nama_barang'],
-                      'qty'=>$r['qty'],'harga_barang'=>$r['harga_barang'],
-                      'jumlah'=>$r['jumlah']);
+        $item = array('id'=>$r['id'],'kd_barang'=>$r['kd_barang'],
+                      'nama_barang'=>$r['nama_barang'],'qty'=>$r['qty'],
+                      'harga_barang'=>$r['harga_barang'],'jumlah'=>$r['jumlah']);
         array_push($barang,$item);
       }
       return($barang);
