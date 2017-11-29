@@ -67,7 +67,16 @@ $stt = $member->pickup1('status','transaksi','kd_transaksi',array($_GET['id']));
     <li><a class='btn btn-primary' target="_blank" href="./bill_cetak.php?id=<?php echo $_SESSION['kd_trnsxi']; ?>">Selesai</a></li>
   </ul>
 </div>
-<?php  }else{ ?>
+<?php  }elseif($stt['status'] == 'Menunggu'){
+echo "
+<div class='rakecetak'>
+  <ul class='list-inline'>
+    <li><a class='btn btn-danger'>Batal</a></li>
+    <li><a class='btn btn-primary'>Selesai</a></li>
+  </ul>
+</div>
+";
+}else{ ?>
   <div class="rakecetak">
     <ul class="list-inline">
       <li><a href="./" class='btn btn-primary'>Kembali</a></li>

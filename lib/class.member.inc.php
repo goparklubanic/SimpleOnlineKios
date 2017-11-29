@@ -22,7 +22,7 @@ class member extends dbcrud{
       $sql = "SELECT id,kd_barang,nama_barang,sum(qty) qty, harga_barang,
               (sum(qty) * harga_barang) jumlah
               FROM view_barangTransaksi
-              WHERE kd_transaksi = ? && status = 'Aktif'
+              WHERE kd_transaksi = ? && ( status = 'Aktif' || status = 'Menunggu' )
               GROUP BY kd_barang";
       $qry = $this->transact($sql,array($ktrx));
       $barang = array();
