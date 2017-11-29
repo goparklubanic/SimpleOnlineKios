@@ -55,6 +55,16 @@ create table stok_masuk(
   jumlah int(3) default 0
 );
 
+drop table if exists pembayaran;
+create table pembayaran(
+  kd_transaksi varchar(5) not null unique,
+  jumlah int(11) default 0,
+  methode enum('Kartu Kredit','ATM','Transfer') default 'Transfer',
+  bank tinytext,
+  nomor_rekening varchar(20),
+  status enum('valid','invalid','on check') default 'on check'
+);
+
 -- triggers --
 -- triger stok --
 delimiter //

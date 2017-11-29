@@ -22,6 +22,35 @@ if($_GET['mod'] == 'chg'){
   redirPage('Update member');
 }
 
+if($_GET['mod']=='pay'){
+  $sets = ('kd_transaksi,jumlah,methode,bank,nomor_rekening');
+  $post = array($_POST['kd_transaksi'],$_POST['jumlah'],$_POST['methode'],
+                $_POST['bank'],$_POST['rekening']);
+  # $_POST['password'],
+  // cari member id menggunakan kode transaksi;
+  $mid = $data->pickup1('id_member','transaksi','kd_transaksi',array($_POST['kd_transaksi']));
+
+  // validasi mid dengan password
+  $key = md5($mid['id_member']."_".$_POST['password']);
+  $vld = $data->pickup1('count(*) data','member','password_member',array($key));
+
+  if($vld['data'] == 0){
+    echo "
+    <script>
+      alert('Maaf, Tidak ditemukan data transaksi ".$_POST['kd_transaksi']."');
+      window.location='./';
+    </script> ";
+  }else{
+    $member = $data->insert('pembayaran',$sets,$post);
+    echo "
+    <script>
+    alert('Terima kasih telah melakukan pembayaran');
+    window.location='./';
+    </script>
+    ";
+  }
+}
+
 function redirPage($message){
   echo "
   <script>

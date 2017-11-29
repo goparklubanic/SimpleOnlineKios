@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ALL & ~E_NOTICE);
 include("lib/config.inc.php");
 require("lib/class.member.inc.php");
 $member = new member();
@@ -60,6 +61,7 @@ $member = new member();
               echo '<li><a href="./?page=chart&id='.$_SESSION['kd_trnsxi'].'"><span class="glyphicon glyphicon-shopping-cart"></span>Keranjang</a></li>';
             }
             ?>
+            <li><a href="./?page=bayar&id=0"><span class="glyphicon glyphicon-credit-card"></span>Konfirmasi</a></li>
             <li><a href="./?page=daftar&id=0"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
             <?php
             if(!isset($_SESSION['member_id'])){
