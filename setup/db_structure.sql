@@ -91,8 +91,10 @@ delimiter ;
 
 -- views --
 CREATE OR REPLACE VIEW view_barangTransaksi AS
-SELECT barangTransaksi.kd_transaksi, barangTransaksi.kd_barang, barang.nama_barang,
-barangTransaksi.qty, barang.harga_barang, (barangTransaksi.qty * barang.harga_barang) jumlah
-FROM barangTransaksi, barang
-WHERE barang.kd_barang = barangTransaksi.kd_barang
+SELECT barangTransaksi.id, barangTransaksi.kd_transaksi, barangTransaksi.kd_barang,
+barang.nama_barang, barangTransaksi.qty, barang.harga_barang,
+(barangTransaksi.qty * barang.harga_barang) jumlah , transaksi.status
+FROM barangTransaksi, barang, transaksi
+WHERE barang.kd_barang = barangTransaksi.kd_barang &&
+transaksi.kd_transaksi = barangTransaksi.kd_transaksi
 ORDER BY kd_transaksi;

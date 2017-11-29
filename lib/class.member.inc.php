@@ -18,7 +18,7 @@ class member extends dbcrud{
       $sql = "SELECT id,kd_barang,nama_barang,sum(qty) qty, harga_barang,
               (sum(qty) * harga_barang) jumlah
               FROM view_barangTransaksi
-              WHERE kd_transaksi = ?
+              WHERE kd_transaksi = ? && status = 'Aktif'
               GROUP BY kd_barang";
       $qry = $this->transact($sql,array($ktrx));
       $barang = array();
@@ -73,6 +73,12 @@ class member extends dbcrud{
       $sets = "id_member,tgl_transaksi,kd_transaksi";
       $data = array($mid,date('Y-m-d'),$trx);
       $ntrx = $this->insert('transaksi',$sets,$data);
+    }
+
+    function stokBatal($id,$qty){
+      $sql = "UPDATE barang SET stok_barang = stok_barang + $qty WHERE kd_barang = ?";
+      $qry = $this->transact($sql,array($id));
+      $qry = null;
     }
 }
 ?>

@@ -2,6 +2,7 @@
 //$brg = $member->pickup2('*','view_barangTransaksi',"kd_transaksi = '".$_GET['id']."'");
 $brg = $member->kerangjangBelanja($_GET['id']);
 $mbr = $member->pickup1('*','member','id_member',array($_SESSION['member_id']));
+$stt = $member->pickup1('status','transaksi','kd_transaksi',array($_GET['id']));
 ?>
 
 <table border="0" style="font-family: monospace; font-size: 12px;">
@@ -21,7 +22,7 @@ $mbr = $member->pickup1('*','member','id_member',array($_SESSION['member_id']));
   <tr>
     <td>Perihal</td>
     <td>:</td>
-    <td>Billing Transaksi No. <b><?php echo $_GET['id']; ?></b></td>
+    <td>Billing Transaksi No. <b id="trx-id"><?php echo $_GET['id']; ?></b></td>
   </tr>
 
 </table>
@@ -59,10 +60,17 @@ $mbr = $member->pickup1('*','member','id_member',array($_SESSION['member_id']));
     <td align="right"><?php echo number_format($total_billing,2,',','.'); ?></td>
   </tr>
 </table>
-
+<?php if($stt['status'] == 'Aktif') { ?>
 <div class="rakecetak">
   <ul class="list-inline">
-  <li><a class='btn btn-danger'>Batal</a></li>
+    <li><a id="trx-cancel" class='btn btn-danger'>Batal</a></li>
     <li><a class='btn btn-primary' target="_blank" href="./bill_cetak.php?id=<?php echo $_SESSION['kd_trnsxi']; ?>">Selesai</a></li>
   </ul>
 </div>
+<?php  }else{ ?>
+  <div class="rakecetak">
+    <ul class="list-inline">
+      <li><a href="./" class='btn btn-primary'>Kembali</a></li>
+    </ul>
+  </div>
+<?php } ?>

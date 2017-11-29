@@ -34,6 +34,21 @@ $(document).ready(function(){
     location.reload();
   });
 
+  $("#trx-cancel").click(function(){
+    var trxid = $('#trx-id').html();
+    var batal = confirm("Transaksi "+trxid+" akan dibatalkan ?");
+    if(batal == true){
+      $.post(
+        "trx-cncl.php",
+        {
+          id: trxid
+        },function(cancelation){
+          alert(cancelation);
+        }
+      );
+    }
+  });
+
 });
 
 function cekVisit(){
