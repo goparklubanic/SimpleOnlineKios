@@ -42,7 +42,34 @@ class pegawai extends dbcrud{
     $qry = null;
   }
   // function updatePesanan(){}
-  function laporanPesanan(){}
+  function laporanPesanan($bulan,$baris=0){
+    $bulan.='%';
+    $sql = "SELECT  transaksi.kd_transaksi, transaksi.tgl_transaksi,
+                    member.nama_member, member.alamat,SUM(jumlah) jumlah,
+                    transaksi.status
+            FROM transaksi, member,view_barangTransaksi
+            WHERE   member.id_member = transaksi.id_member &&
+                    view_barangTransaksi.kd_transaksi = transaksi.kd_transaksi
+            GROUP BY transaksi.kd_transaksi
+            ORDER BY transaksi.kd_transaksi
+            LIMIT ".$baris.",".rows;
+    $qry = $this->transact($sql);
+    $trx = array();
+    while($r = $qry->fetch()){
+      $data = array(
+        'kode'=>$r['kd_transaksi'],
+        'tanggal'=>$this->tanggalTerbaca($r['tgl_transaksi']),
+        'nama'=>$r['nama_member'],
+        'alamat'=>$r['alamat'],
+        'jumlah'=>$r['jumlah'],
+        'status'=>$r['status']
+      );
+
+      array_push($trx,$data);
+    }
+    return($trx); $qry = null;
+
+  }
   function laporanPembayaran(){}
 }
 ?>

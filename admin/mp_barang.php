@@ -1,6 +1,6 @@
 <?php
-  require("../lib/class.crud.inc.php");
-  $brg = new dbcrud();
+  require("../lib/class.pegawai.inc.php");
+  $brg = new pegawai();
  ?>
 <div class="table-responsive">
   <div>

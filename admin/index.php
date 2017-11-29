@@ -30,6 +30,15 @@
             <li><a href="./?page=member">Member</a></li>
             <li><a href="./?page=pegawai">Pegawai</a></li>
             <li><a href="./?page=bayar">Pembayaran</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Laporan<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Pembayaran</a></li>
+                <li><a href="./rep-order.php">Pesanan</a></li>
+        </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Keluar</a></li>
