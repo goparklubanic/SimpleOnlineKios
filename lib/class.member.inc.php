@@ -12,8 +12,12 @@ class member extends dbcrud{
     }
   /*
     function bayar(){}
-    function infoBarang(){}
   */
+    function infoBarang($id){
+      $barang = $this->pickup1('*','barang','kd_barang',array($id));
+      return($barang);
+    }
+
     function kerangjangBelanja($ktrx){
       $sql = "SELECT id,kd_barang,nama_barang,sum(qty) qty, harga_barang,
               (sum(qty) * harga_barang) jumlah

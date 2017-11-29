@@ -1,6 +1,7 @@
 <?php
 
-$barang = $member->pickup1('*','barang','kd_barang',array($_GET['id']));
+// $barang = $member->pickup1('*','barang','kd_barang',array($_GET['id']));
+$barang = $member->infoBarang($_GET['id']);
 ?>
 <div class="col-md-4" id='db_image'>
   <img src='<?php echo './product_images/'.$barang['gambar']; ?>' />
