@@ -35,7 +35,7 @@
                 Laporan<span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Pembayaran</a></li>
+                <li><a href="./rep-paymt.php">Pembayaran</a></li>
                 <li><a href="./rep-order.php">Pesanan</a></li>
         </ul>
             </li>

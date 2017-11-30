@@ -12,13 +12,14 @@ echo "</pre>";
   <table class='table table-sm table-striped' border='0'>
     <thead>
       <tr>
-        <th width='125'>Kode Transaksi</th>
+        <th width='100'>Kode Trx</th>
         <th width='150'>Tanggal Transaksi</th>
         <th>Nama Member</th>
-        <th>Alamat</th>
+        <!--th>Alamat</th-->
         <th>No. Telp</th>
         <th width='100'>Jumlah</th>
-        <th>Kontrol</th>
+        <th width='175'>Pembayaran</th>
+        <th width='100'>Kontrol</th>
       </tr>
     </thead>
     <tbody>
@@ -26,15 +27,24 @@ echo "</pre>";
       $i=0;
       while($i < count($billing)){
         $tanggal  = $bill->tanggalTerbaca($billing[$i]['tgl']);
+        $bayar = $bill->pickup1('status,jumlah','pembayaran','kd_transaksi',array($billing[$i]['id']));
+        if($bayar['status']==''){
+          $stabar  = 'Nihil';
+          $kontrol = '';
+        }else{
+          $stabar  = $bayar['status'];
+          $kontrol = "<a href=javascript:void(0) onClick=lunas(".$billing[$i]['id'].")>Lunas</a>";
+        }
         echo "
         <tr>
           <td align='center'>".$billing[$i]['id']."</td>
           <td align='right'>".$tanggal."</td>
           <td>".$billing[$i]['nama']."</td>
-          <td>".$billing[$i]['alamat`']."</td>
+          <!--td>".$billing[$i]['alamat`']."</td -->
           <td>".$billing[$i]['telp']."</td>
           <td align='right'>".number_format($billing[$i]['jumlah'],0,',','.')."</td>
-          <td><a href=javascript:void(0) onClick=lunas(".$billing[$i]['id'].")>Lunas</a></td>
+          <td align='right'><span style='float:left;'>".$stabar."</span> ".number_format($bayar['jumlah'],0,',','.')."</td>
+          <td>".$kontrol."</td>
         </tr>
         ";
         $i++;

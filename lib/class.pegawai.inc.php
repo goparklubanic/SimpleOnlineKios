@@ -4,6 +4,7 @@ class pegawai extends dbcrud{
   function login(){}
   function konfirmBayar($id){
     $this->update('transaksi','status',array('Lunas',$id),'kd_transaksi');
+    $this->update('pembayaran','status',array('valid',$id),'kd_transaksi');
   }
 
   function updatePegawai($sets,$post,$keys){
@@ -67,9 +68,36 @@ class pegawai extends dbcrud{
 
       array_push($trx,$data);
     }
-    return($trx); $qry = null;
+    return($trx); $qry = null; $trx=null;
 
   }
-  function laporanPembayaran(){}
+  function laporanPembayaran($bulan,$baris=0){
+    $bulan.='%';
+    $sql = "SELECT pembayaran.*,member.nama_member, member.alamat, member.no_telp
+            FROM pembayaran,member,transaksi
+            WHERE transaksi.kd_transaksi=pembayaran.kd_transaksi &&
+                  member.id_member = transaksi.id_member &&
+                  tgl_cek LIKE '$bulan'
+            ORDER BY tgl_cek
+            LIMIT ".$baris.",".rows;
+    $qry = $this->transact($sql);
+    $bayar = array();
+    while($r = $qry->fetch()){
+      $data = array(
+        'kode'=>$r['kd_transaksi'],
+        'tgl'=>$this->tanggalTerbaca($r['tgl_cek']),
+        'nama'=>$r['nama_member'],
+        'alamat'=>$r['alamat'],
+        'cara'=>$r['methode'],
+        'bank'=>$r['bank'],
+        'rekening'=>$r['nomor_rekening'],
+        'jumlah'=>$r['jumlah'],
+        'status'=>$r['status']
+      );
+
+      array_push($bayar,$data);
+    }
+    return($bayar); $qry = null; $bayar=null;
+  }
 }
 ?>
