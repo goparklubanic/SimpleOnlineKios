@@ -1,7 +1,10 @@
 <?php
 require("class.crud.inc.php");
 class pegawai extends dbcrud{
-  function login(){}
+  function login($key){
+    $login = $this->pickup1('nama_pegawai','pegawai','password_pegawai',array($key));
+    return($login);
+  }
   function konfirmBayar($id){
     $this->update('transaksi','status',array('Lunas',$id),'kd_transaksi');
     $this->update('pembayaran','status',array('valid',$id),'kd_transaksi');
@@ -50,7 +53,8 @@ class pegawai extends dbcrud{
                     transaksi.status
             FROM transaksi, member,view_barangTransaksi
             WHERE   member.id_member = transaksi.id_member &&
-                    view_barangTransaksi.kd_transaksi = transaksi.kd_transaksi
+                    view_barangTransaksi.kd_transaksi = transaksi.kd_transaksi &&
+                    tgl_transaksi LIKE '".$bulan."'
             GROUP BY transaksi.kd_transaksi
             ORDER BY transaksi.kd_transaksi
             LIMIT ".$baris.",".rows;

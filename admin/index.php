@@ -1,6 +1,12 @@
 <?php
+  session_start();
+  if(!isset($_SESSION['admin'])){
+    header("Location:./login.php");
+  }
   error_reporting(E_ALL & ~E_NOTICE);
+
   include("../lib/config.inc.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +47,8 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Keluar</a></li>
+            <li><a href="#"><?php echo $_SESSION['admin']; ?></a></li>
+            <li><a href="./login.php"><span class="glyphicon glyphicon-log-out"></span> Keluar</a></li>
           </ul>
         </div>
       </nav>
