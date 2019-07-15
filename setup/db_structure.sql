@@ -58,6 +58,7 @@ create table stok_masuk(
 drop table if exists pembayaran;
 create table pembayaran(
   kd_transaksi varchar(5) not null unique,
+  tgl_cek date,
   jumlah int(11) default 0,
   methode enum('Kartu Kredit','ATM','Transfer') default 'Transfer',
   bank tinytext,

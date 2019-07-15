@@ -40,7 +40,7 @@ CREATE TABLE `barang` (
 
 LOCK TABLES `barang` WRITE;
 /*!40000 ALTER TABLE `barang` DISABLE KEYS */;
-INSERT INTO `barang` VALUES ('112','Barang 112','test',16,59999,'Merah','112.png'),('113','Barang 113','test',16,44999,'Kuning','113.png'),('114','Item #114','test',16,75000,'light green','114.png'),('111','Item 111','test',12,42500,'Merah Jambu','111.png');
+INSERT INTO `barang` VALUES ('112','Barang 112','test',16,59999,'Merah','112.png'),('113','Barang 113','test',16,44999,'Kuning','113.png'),('114','Item #114','test',16,75000,'light green','114.png'),('111','Item 111','test',11,42500,'Merah Jambu','111.png');
 /*!40000 ALTER TABLE `barang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `barangTransaksi` (
   `kd_barang` varchar(10) DEFAULT NULL,
   `qty` int(3) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `barangTransaksi` (
 
 LOCK TABLES `barangTransaksi` WRITE;
 /*!40000 ALTER TABLE `barangTransaksi` DISABLE KEYS */;
-INSERT INTO `barangTransaksi` VALUES (1,'11001','111',2),(2,'11001','113',2),(3,'11001','112',2),(7,'11002','111',2),(8,'11003','113',1),(9,'11003','114',2),(10,'11003','113',1),(11,'11004','112',1),(14,'11004','111',2),(16,'11004','112',1),(17,'11005','111',1),(18,'11006','113',1),(19,'11007','114',2),(20,'11007','111',1);
+INSERT INTO `barangTransaksi` VALUES (1,'11001','111',2),(2,'11001','113',2),(3,'11001','112',2),(7,'11002','111',2),(8,'11003','113',1),(9,'11003','114',2),(10,'11003','113',1),(11,'11004','112',1),(14,'11004','111',2),(16,'11004','112',1),(17,'11005','111',1),(18,'11006','113',1),(19,'11007','114',2),(20,'11007','111',1),(21,'12001','111',1);
 /*!40000 ALTER TABLE `barangTransaksi` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -205,7 +205,7 @@ CREATE TABLE `pengunjung` (
 
 LOCK TABLES `pengunjung` WRITE;
 /*!40000 ALTER TABLE `pengunjung` DISABLE KEYS */;
-INSERT INTO `pengunjung` VALUES ('1711240001','2017-11-24 02:38:04'),('1711280001','2017-11-27 22:49:38'),('1711280002','2017-11-27 23:12:03'),('1711280003','2017-11-27 23:13:07');
+INSERT INTO `pengunjung` VALUES ('1711240001','2017-11-24 02:38:04'),('1711280001','2017-11-27 22:49:38'),('1711280002','2017-11-27 23:12:03'),('1711280003','2017-11-27 23:13:07'),('1712050001','2017-12-05 00:57:28'),('1712050002','2017-12-05 01:03:11');
 /*!40000 ALTER TABLE `pengunjung` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +272,7 @@ CREATE TABLE `transaksi` (
 
 LOCK TABLES `transaksi` WRITE;
 /*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
-INSERT INTO `transaksi` VALUES ('11001','1711240001','2017-11-27','Lunas'),('11002','as-002','2017-11-27','Lunas'),('11003','as-003','2017-11-27','Lunas'),('11004','1711280003','2017-11-28','Menunggu'),('11005','as-003','2017-11-28','Menunggu'),('11006','1711280003','2017-11-29','Menunggu'),('11007','as-003','2017-11-29','Lunas');
+INSERT INTO `transaksi` VALUES ('11001','1711240001','2017-11-27','Lunas'),('11002','as-002','2017-11-27','Lunas'),('11003','as-003','2017-11-27','Lunas'),('11004','1711280003','2017-11-28','Menunggu'),('11005','as-003','2017-11-28','Menunggu'),('11006','1711280003','2017-11-29','Menunggu'),('11007','as-003','2017-11-29','Lunas'),('12001','as-003','2017-12-05','Menunggu');
 /*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,4 +324,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-30 12:34:42
+-- Dump completed on 2018-02-19 20:02:18
